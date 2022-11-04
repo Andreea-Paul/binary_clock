@@ -16,64 +16,51 @@ namespace binary_clock
             
             int r;
             string h;
-            List<int> ora = new List<int>();
-            List<int> minut = new List<int>();
-            List<int> secunda = new List<int>();
+            
             List<string> ora_s = new List<string>();
             List<string> minut_s = new List<string>();
             List<string> secunda_s = new List<string>();
 
             if (hour == 0)
-                ora.Add(0);
+                ora_s.Add("O");
 
             while (hour > 0)
             {
                 r = hour % 2;
+                h=r.ToString();
+                ora_s.Add(h);
                 hour /= 2;
-                ora.Add(r);
+                
             }
-            ora.Reverse();
+            ora_s.Reverse();
 
             if (minute == 0)
-                minut.Add(0);
+                minut_s.Add("O");
 
             while (minute > 0)
             {
                 r = minute % 2;
+                h = r.ToString();
+                minut_s.Add(h);
                 minute /= 2;
-                minut.Add(r);
+                
             }
-            minut.Reverse();
+            minut_s.Reverse();
 
             if(second == 0)
-                secunda.Add(0);
+                secunda_s.Add("O");
 
             while (second > 0)
             {
                 r = second % 2;
-                second /= 2;
-                secunda.Add(r);
-            }
-            secunda.Reverse();
-
-            foreach (int i in ora)
-            {
-                h = i.ToString();
-                ora_s.Add(h);
-            }
-
-            foreach (int i in minut)
-            {
-                h = i.ToString();
-                minut_s.Add(h);
-            }
-
-            foreach (int i in secunda)
-            {
-                h = i.ToString();
+                h = r.ToString();
                 secunda_s.Add(h);
-
+                second /= 2;
+                
             }
+            secunda_s.Reverse();
+
+            
             for (int i = 0; i < ora_s.Count; i++)
             {
                 if (ora_s[i].Contains("1"))
@@ -103,32 +90,22 @@ namespace binary_clock
 
             if (ora_s.Count == 4)
             {
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
+                ora_s.Insert(0, "OO");
             }
 
             if(ora_s.Count == 3)
             {
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
+                ora_s.Insert(0, "OOO");
             }
 
             if(ora_s.Count == 2)
             {
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
+                ora_s.Insert(0, "OOOO");
             }
 
             if (ora_s.Count == 1)
             {
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
-                ora_s.Insert(0, "O");
+                ora_s.Insert(0, "OOOOO");
             }
 
             if (minut_s.Count == 5)
@@ -136,32 +113,22 @@ namespace binary_clock
 
             if (minut_s.Count == 4)
             {
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
+                minut_s.Insert(0, "OO");
             }
 
             if (minut_s.Count == 3)
             {
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
+                minut_s.Insert(0, "OOO");
             }
 
             if (minut_s.Count == 2)
             {
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
+                minut_s.Insert(0, "OOOO");
             }
 
             if (minut_s.Count == 1)
             {
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
-                minut_s.Insert(0, "O");
+                minut_s.Insert(0, "OOOOO");
             }
 
             if (secunda_s.Count == 5)
@@ -169,32 +136,22 @@ namespace binary_clock
 
             if (secunda_s.Count == 4)
             {
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
+                secunda_s.Insert(0, "OO");
             }
 
             if (ora_s.Count == 3)
             {
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
+                secunda_s.Insert(0, "OOO");
             }
 
             if (secunda_s.Count == 2)
             {
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
+                secunda_s.Insert(0, "OOOO");
             }
 
             if (secunda_s.Count == 1)
             {
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
-                secunda_s.Insert(0, "O");
+                secunda_s.Insert(0, "OOOOO");
             }
 
             Console.WriteLine(String.Join("", ora_s) + " Hour");
