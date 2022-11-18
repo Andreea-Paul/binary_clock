@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -153,10 +155,24 @@ namespace binary_clock
             {
                 secunda_s.Insert(0, "OOOOO");
             }
+            
+            ora_s.Reverse();
+            minut_s.Reverse(); 
+            secunda_s.Reverse();
 
-            Console.WriteLine(String.Join("", ora_s) + " Hour");
-            Console.WriteLine(String.Join("", minut_s) + " Minute");
-            Console.WriteLine(String.Join("", secunda_s) + " Second");
+            string ora = String.Join("", ora_s);
+            string minut = String.Join("", minut_s);
+            string secunda = String.Join("", secunda_s);
+            for (int i=0;i<ora.Length;i++)
+            {
+                Console.WriteLine($" {ora[i]}  {minut[i]}  {secunda[i]}   {(Math.Pow(2, i))}");
+            }
+            Console.WriteLine(" *  *  *");
+            Console.WriteLine(" O  M  S");
+            Console.WriteLine(" r  i  e");
+            Console.WriteLine(" a  n  c");
+
+            
              
 
         }
