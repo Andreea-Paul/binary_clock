@@ -16,154 +16,11 @@ namespace binary_clock
             int minute = DateTime.Now.Minute;
             int second = DateTime.Now.Second;
             
-            int r;
-            string h;
+            string ora = Processing(hour);                         
+            string minut = Processing(minute);                                      
+            string secunda = Processing(second);                                     
             
-            List<string> ora_s = new List<string>();
-            List<string> minut_s = new List<string>();
-            List<string> secunda_s = new List<string>();
-
-            if (hour == 0)
-                ora_s.Add("O");
-
-            while (hour > 0)
-            {
-                r = hour % 2;
-                h=r.ToString();
-                ora_s.Add(h);
-                hour /= 2;
-                
-            }
-            ora_s.Reverse();
-
-            if (minute == 0)
-                minut_s.Add("O");
-
-            while (minute > 0)
-            {
-                r = minute % 2;
-                h = r.ToString();
-                minut_s.Add(h);
-                minute /= 2;
-                
-            }
-            minut_s.Reverse();
-
-            if(second == 0)
-                secunda_s.Add("O");
-
-            while (second > 0)
-            {
-                r = second % 2;
-                h = r.ToString();
-                secunda_s.Add(h);
-                second /= 2;
-                
-            }
-            secunda_s.Reverse();
-
-            
-            for (int i = 0; i < ora_s.Count; i++)
-            {
-                if (ora_s[i].Contains("1"))
-                    ora_s[i] = "X";
-                if (ora_s[i].Contains("0"))
-                    ora_s[i] = "O";
-            }
-
-            for (int i = 0; i < minut_s.Count; i++)
-            {
-                if (minut_s[i].Contains("1"))
-                    minut_s[i] = "X";
-                if (minut_s[i].Contains("0"))
-                    minut_s[i] = "O";
-            }
-
-            for (int i = 0; i < secunda_s.Count; i++)
-            {
-                if (secunda_s[i].Contains("1"))
-                    secunda_s[i] = "X";
-                if (secunda_s[i].Contains("0"))
-                    secunda_s[i] = "O";
-            }
-            
-            if (ora_s.Count == 5)
-                ora_s.Insert(0, "O");
-
-            if (ora_s.Count == 4)
-            {
-                ora_s.Insert(0, "OO");
-            }
-
-            if(ora_s.Count == 3)
-            {
-                ora_s.Insert(0, "OOO");
-            }
-
-            if(ora_s.Count == 2)
-            {
-                ora_s.Insert(0, "OOOO");
-            }
-
-            if (ora_s.Count == 1)
-            {
-                ora_s.Insert(0, "OOOOO");
-            }
-
-            if (minut_s.Count == 5)
-                minut_s.Insert(0, "O");
-
-            if (minut_s.Count == 4)
-            {
-                minut_s.Insert(0, "OO");
-            }
-
-            if (minut_s.Count == 3)
-            {
-                minut_s.Insert(0, "OOO");
-            }
-
-            if (minut_s.Count == 2)
-            {
-                minut_s.Insert(0, "OOOO");
-            }
-
-            if (minut_s.Count == 1)
-            {
-                minut_s.Insert(0, "OOOOO");
-            }
-
-            if (secunda_s.Count == 5)
-                secunda_s.Insert(0, "O");
-
-            if (secunda_s.Count == 4)
-            {
-                secunda_s.Insert(0, "OO");
-            }
-
-            if (ora_s.Count == 3)
-            {
-                secunda_s.Insert(0, "OOO");
-            }
-
-            if (secunda_s.Count == 2)
-            {
-                secunda_s.Insert(0, "OOOO");
-            }
-
-            if (secunda_s.Count == 1)
-            {
-                secunda_s.Insert(0, "OOOOO");
-            }
-            
-            ora_s.Reverse();
-            minut_s.Reverse(); 
-            secunda_s.Reverse();
-
-            string ora = String.Join("", ora_s);
-            string minut = String.Join("", minut_s);
-            string secunda = String.Join("", secunda_s);
-            for (int i=0;i<ora.Length;i++)
+            for (int i=0;i<6;i++)
             {
                 Console.WriteLine($" {ora[i]}  {minut[i]}  {secunda[i]}   {(Math.Pow(2, i))}");
             }
@@ -171,10 +28,36 @@ namespace binary_clock
             Console.WriteLine(" O  M  S");
             Console.WriteLine(" r  i  e");
             Console.WriteLine(" a  n  c");
+        }
 
+        private static string Processing(int n)
+        {
+            List<string> myList = new List<string>();
+            if (n == 0)
+                myList.Add("O");
+
+            while (n > 0)
+            {
+                int r = n % 2;
+                string h = r.ToString();
+                myList.Add(h);
+                n /= 2;
+
+            }
+            for (int i = 0; i < myList.Count; i++)
+            {
+                if (myList[i].Contains("1"))
+                    myList[i] = "X";
+                if (myList[i].Contains("0"))
+                    myList[i] = "O";
+            }
+            string x = String.Join("", myList);
             
-             
-
+            while(x.Length < 6)
+            {
+                x = x + "O";
+            }
+            return x;
         }
     }
 }
